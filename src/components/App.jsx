@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addTodo } from '../actions/index';
+import AppNavbar from './AppNavbar';
+import Header from './Header';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +19,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
+        <AppNavbar />
+        <Header />
         <h1>To Do s</h1>
         <div className="input-group">
           <input
