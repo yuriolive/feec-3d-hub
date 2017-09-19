@@ -7,7 +7,8 @@ module.exports = {
         contentBase: './dist',
         port: process.env.PORT || 8080,
         host: process.env.IP || '0.0.0.0',
-        public: 'learn-redux-yuriolive.c9users.io'
+        public: 'learn-redux-yuriolive.c9users.io',
+        historyApiFallback: true,
     },
     module: {
         rules: [{

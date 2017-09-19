@@ -5,17 +5,13 @@ const Header = () => (
   <div>
     <Jumbotron>
       <div className="container">
-        <h1 className="display-3">Hello, world!</h1>
+        <h1 className="display-3">O espaço de prototipação</h1>
+        <hr className="my-2 mt-4" />
         <p className="lead">
-          This is a simple hero unit, a simple
-           Jumbotron-style component for calling extra attention to
-           featured content or information.
+          Aprenda a usar e a fazer projetos usando a impressora 3D da FEEC
         </p>
-        <hr className="my-2" />
-        <p>It uses utility classes for typgraphy
-         and spacing to space content out within the larger container.</p>
         <p className="lead">
-          <Button color="primary">Learn More</Button>
+          <Button color="primary">Saiba mais</Button>
         </p>
       </div>
     </Jumbotron>

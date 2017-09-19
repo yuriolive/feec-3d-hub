@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addTodo } from '../actions/index';
 import AppNavbar from './AppNavbar';
-import Header from './Header';
+import User from '../classes/User';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,8 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <AppNavbar />
-        <Header />
+        <AppNavbar user={this.props.user} />
         <h1>To Do s</h1>
         <div className="input-group">
           <input
@@ -54,11 +53,12 @@ class App extends React.Component {
 App.propTypes = {
   addTodo: PropTypes.func.isRequired,
   todos: PropTypes.arrayOf(PropTypes.string).isRequired,
+  user: PropTypes.instanceOf(User).isRequired,
 };
 
 // Get apps state and pass it as props to UserList
 //      > whenever state changes, the UserList will automatically re-render
-const mapStateToProps = state => ({ todos: state.todos });
+const mapStateToProps = state => ({ todos: state.todos, user: state.user });
 
 // Get actions and pass them as props to to UserList
 //      > now UserList has this.props.selectUser
