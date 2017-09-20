@@ -1,4 +1,6 @@
 const Path = require('path');
+const webpack = require('webpack');
+
 
 const config = {
     entry: './src/index.jsx',
@@ -37,6 +39,11 @@ const config = {
     resolve: {
         extensions: ['.js', '.jsx']
     },
+    plugins: process.env.NODE_ENV === 'production' ? [
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin()
+    ] : [],
     output: {
         filename: 'bundle.js',
         path: Path.resolve(__dirname, 'dist')

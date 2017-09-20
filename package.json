@@ -9,13 +9,15 @@
     "dev": "webpack-dev-server --inline --hot --progress --colors",
     "test": "jest",
     "build": "webpack --optimize-minimize",
-    "prod": "webpack-dev-server --inline --progress --colors"
+    "prod": "webpack && node server.js"
   },
   "dependencies": {
     "aphrodite": "^1.2.4",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.0.0-alpha.6",
     "cloudinary": "^1.9.0",
+    "compression": "^1.7.0",
+    "express": "^4.15.4",
     "firebase": "^4.3.1",
     "history": "^4.7.2",
     "prop-types": "^15.5.10",
@@ -28,7 +30,8 @@
     "react-transition-group": "^1.2.0",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
-    "redux-saga": "^0.15.6"
+    "redux-saga": "^0.15.6",
+    "webpack": "^3.5.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -48,7 +51,6 @@
     "jest": "^21.0.2",
     "react-test-renderer": "^15.6.1",
     "style-loader": "^0.18.2",
-    "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1"
   }
 }
