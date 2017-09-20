@@ -1,9 +1,15 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Card, CardTitle, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { emailLogin } from '../actions/index';
+
+const DisabledLoginButton = () => (
+  <span>
+    <i className="fa fa-refresh fa-spin fa-fw" /> Carregando...
+  </span>);
 
 class Login extends React.Component {
   constructor(props) {
@@ -39,18 +45,16 @@ class Login extends React.Component {
                 name="password"
                 placeholder="Digite sua senha"
               />
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" />{' '}
-                Lembrar de mim
-              </Label>
+              <small>
+                <Link to="/resetar-senha">Esqueceu sua senha?</Link>
+              </small>
             </FormGroup>
           </Form>
           <Button
             color="primary"
             onClick={() => this.props.emailLogin(this.state.user)}
-          >Entrar</Button>
+            disabled={this.props.loading}
+          >{ this.props.loading === true ? (<DisabledLoginButton />) : ('Entrar')}</Button>
         </Card>
       </div>
     );
@@ -59,11 +63,12 @@ class Login extends React.Component {
 
 Login.propTypes = {
   emailLogin: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 // Get apps state and pass it as props to UserList
 //      > whenever state changes, the UserList will automatically re-render
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({ loading: state.login.loading });
 
 // Get actions and pass them as props to to UserList
 //      > now UserList has this.props.selectUser

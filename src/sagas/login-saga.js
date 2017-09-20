@@ -1,10 +1,13 @@
 // import firebase from 'firebase';
 import { call, put, takeEvery } from 'redux-saga/effects';
+// import { browserHistory } from 'react-router';
 import { firebaseAuth } from '../firebase';
+import { EMAIL_LOGIN_LOADING, USER_EMAIL_LOGIN_REQUESTED, USER_EMAIL_LOGIN_SUCCEEDED, USER_EMAIL_LOGIN_FAILED } from '../actions/actions-login';
 
 export function* emailLogin(action) {
   try {
-    // TODO Put disable submit button
+    // Disable submit button
+    yield put({ type: EMAIL_LOGIN_LOADING });
 
     const user = yield call(
       [firebaseAuth, firebaseAuth.createUserWithEmailAndPassword],
@@ -13,16 +16,22 @@ export function* emailLogin(action) {
 
     console.log(user);
 
-    yield put({ type: 'USER_EMAIL_LOGIN_SUCCEEDED', payload: user });
+    yield put({ type: USER_EMAIL_LOGIN_SUCCEEDED, payload: user });
 
-    // TODO Redirect page
-    // yield history.push('/');
+    // Enable submit button
+    yield put({ type: EMAIL_LOGIN_LOADING });
+
+    // Redirect to first page
+    // yield browserHistory.push('/');
   } catch (e) {
     console.log(e);
-    yield put({ type: 'USER_EMAIL_LOGIN_FAILED', message: e.message });
+    yield put({ type: USER_EMAIL_LOGIN_FAILED, message: e.message });
+
+    // Enable submit button
+    yield put({ type: EMAIL_LOGIN_LOADING });
   }
 }
 
 export function* watchEmailLogin() {
-  yield takeEvery('USER_EMAIL_LOGIN_REQUESTED', emailLogin);
+  yield takeEvery(USER_EMAIL_LOGIN_REQUESTED, emailLogin);
 }

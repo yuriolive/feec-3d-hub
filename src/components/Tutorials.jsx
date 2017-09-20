@@ -1,9 +1,10 @@
 import React from 'react';
+import { Container } from 'reactstrap';
 
 const Tutorials = () => (
-  <div>
-    <p>Tutorials</p>
-  </div>
+  <Container>
+    <h1 className="display-4">Tutoriais</h1>
+  </Container>
 );
 
 export default Tutorials;

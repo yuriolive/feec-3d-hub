@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import User from '../classes/User';
 
+
 function AppNavbarUser(props) {
   if (typeof props.user !== 'undefined') {
     return (
@@ -15,13 +16,11 @@ function AppNavbarUser(props) {
   return (
     <Nav navbar>
       <NavItem>
-        <NavLink href="entrar">Entrar</NavLink>
+        <NavLink tag={Link} to="/entrar">Entrar</NavLink>
       </NavItem>
-      <Link to="/registrar">
-        <Button outline color="primary" className="ml-3">
-          Registre-se
-        </Button>
-      </Link>
+      <Button tag={Link} to="/registrar" outline color="primary" className="ml-3">
+        Registre-se
+      </Button>
     </Nav>);
 }
 
@@ -44,17 +43,17 @@ export default class AppNavbar extends React.Component {
       <div className="container">
         <Navbar color="faded" light toggleable>
           <NavbarToggler right onClick={this.toggle} />
-          <NavbarBrand href="/">FEEC 3D Hub</NavbarBrand>
+          <NavbarBrand tag={Link} to="/">FEEC 3D Hub</NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavLink href="/cursos">Cursos</NavLink>
+                <NavLink tag={Link} to="/cursos">Cursos</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/tutoriais">Tutoriais</NavLink>
+                <NavLink tag={Link} to="/tutoriais">Tutoriais</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/projetos">Projetos</NavLink>
+                <NavLink tag={Link} to="/projetos">Projetos</NavLink>
               </NavItem>
             </Nav>
             <AppNavbarUser user={this.props.user} />

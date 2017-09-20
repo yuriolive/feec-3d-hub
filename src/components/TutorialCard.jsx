@@ -1,21 +1,25 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBlock,
-  CardTitle, CardSubtitle, CardLink } from 'reactstrap';
+  CardTitle, CardSubtitle, CardLink, CardFooter } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 
 const TutorialCard = props => (
-  <Card>
+  <Card className="mt-3">
     <CardImg top width="100%" src={props.img.thubmnail} alt="Card image cap" />
     <CardBlock>
       <CardTitle>{props.title}</CardTitle>
       <CardSubtitle>adicionado por {props.author.name}</CardSubtitle>
       <CardText className="mt-3">{props.description}</CardText>
+    </CardBlock>
+    <CardFooter>
       <CardLink href={props.url} className="mr-auto">Começar</CardLink>
       <span className="float-right">
-        <small className="text-muted">Last updated 3 mins ago</small>
+        <small className="text-muted">
+          <i className="fa fa-clock-o" aria-hidden="true" /> 30 min
+        </small>
       </span>
-    </CardBlock>
+    </CardFooter>
   </Card>
 );
 
