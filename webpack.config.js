@@ -1,6 +1,6 @@
 const Path = require('path');
 
-module.exports = {
+const config = {
     entry: './src/index.jsx',
     devServer: {
         inline: true,
@@ -43,3 +43,10 @@ module.exports = {
         path: Path.resolve(__dirname, 'dist')
     }
 };
+
+if(process.env.NODE_ENV === 'production') {
+    delete config.devServer.public;
+}
+
+
+module.exports = config;
