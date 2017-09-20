@@ -9,7 +9,7 @@
     "dev": "webpack-dev-server --inline --hot --progress --colors",
     "test": "jest",
     "build": "webpack --optimize-minimize",
-    "prod": "webpack-dev-server --inline --hot --progress --colors"
+    "prod": "webpack-dev-server --inline --progress --colors"
   },
   "dependencies": {
     "aphrodite": "^1.2.4",

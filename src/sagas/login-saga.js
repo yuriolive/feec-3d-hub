@@ -14,8 +14,6 @@ export function* emailLogin(action) {
       action.payload.email,
       action.payload.password);
 
-    console.log(user);
-
     yield put({ type: USER_EMAIL_LOGIN_SUCCEEDED, payload: user });
 
     // Enable submit button
@@ -24,7 +22,6 @@ export function* emailLogin(action) {
     // Redirect to first page
     // yield browserHistory.push('/');
   } catch (e) {
-    console.log(e);
     yield put({ type: USER_EMAIL_LOGIN_FAILED, message: e.message });
 
     // Enable submit button
