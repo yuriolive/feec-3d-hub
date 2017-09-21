@@ -1,23 +1,19 @@
 var express = require('express');
 var Path = require('path');
 var compression = require('compression');
+var serveStatic = require('serve-static');
 
 var app = express();
 
 app.use(compression());
-
-// serve our static stuff like index.css
-app.use(express.static(Path.resolve(__dirname, 'dist')));
+app.use(serveStatic('dist'));
 
 // send all requests to index.html so browserHistory in React Router works
 app.get('*', function (req, res) {
   if(req.headers['x-forwarded-proto'] !== 'https') {
     res.redirect('https://' + req.get('host') + req.originalUrl);
-  } else {
-    res.sendFile(Path.resolve(__dirname, 'dist', 'index.html'));
   }
-  
-})
+});
 
 var PORT = process.env.PORT || 8080;
 
