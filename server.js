@@ -11,10 +11,10 @@ app.use(express.static(Path.resolve(__dirname, 'dist')));
 
 // send all requests to index.html so browserHistory in React Router works
 app.get('*', function (req, res) {
-  if(req.secure) {
-    res.sendFile(Path.resolve(__dirname, 'dist', 'index.html'));
-  } else {
+  if(req.headers['x-forwarded-proto'] !== 'https') {
     res.redirect('https://' + req.get('host') + req.originalUrl);
+  } else {
+    res.sendFile(Path.resolve(__dirname, 'dist', 'index.html'));
   }
   
 })
