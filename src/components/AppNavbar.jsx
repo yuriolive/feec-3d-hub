@@ -1,28 +1,7 @@
 import React from 'react';
-import { Collapse, Navbar, Button, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import PropTypes from 'prop-types';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import User from '../classes/User';
-
-
-function AppNavbarUser(props) {
-  if (typeof props.user !== 'undefined') {
-    return (
-      <Nav navbar>
-        <img alt="user" src="//placehold.it/40" className="rounded-circle ml-3" />
-      </Nav>);
-  }
-
-  return (
-    <Nav navbar>
-      <NavItem>
-        <NavLink tag={Link} to="/entrar">Entrar</NavLink>
-      </NavItem>
-      <Button tag={Link} to="/registrar" outline color="primary" className="ml-3">
-        Registre-se
-      </Button>
-    </Nav>);
-}
+import AppNavbarLogin from './AppNavbarLogin';
 
 export default class AppNavbar extends React.Component {
   constructor(props) {
@@ -55,19 +34,14 @@ export default class AppNavbar extends React.Component {
               <NavItem>
                 <NavLink tag={Link} to="/projetos">Projetos</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href="//143.106.50.132:3344/" target="_blank">Impressora</NavLink>
+              </NavItem>
             </Nav>
-            <AppNavbarUser user={this.props.user} />
+            <AppNavbarLogin />
           </Collapse>
         </Navbar>
       </div>
     );
   }
 }
-
-AppNavbar.propTypes = {
-  user: PropTypes.instanceOf(User).isRequired,
-};
-
-AppNavbarUser.propTypes = {
-  user: PropTypes.instanceOf(User).isRequired,
-};

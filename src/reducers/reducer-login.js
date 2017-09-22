@@ -3,6 +3,7 @@ import { EMAIL_LOGIN_LOADING, USER_EMAIL_LOGIN_FAILED, USER_EMAIL_LOGIN_SUCCEEDE
 const defaultLoginState = {
   loading: false,
   user: {},
+  loggedIn: false,
 };
 
 export default function (state = defaultLoginState, action) {
@@ -10,7 +11,7 @@ export default function (state = defaultLoginState, action) {
     case EMAIL_LOGIN_LOADING:
       return { ...state, loading: !state.loading };
     case USER_EMAIL_LOGIN_SUCCEEDED:
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload, loggedIn: true };
     case USER_EMAIL_LOGIN_FAILED:
       return { ...state, error: action.payload };
     default:

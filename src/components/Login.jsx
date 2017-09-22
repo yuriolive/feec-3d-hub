@@ -8,7 +8,7 @@ import { emailLogin } from '../actions/index';
 
 const DisabledLoginButton = () => (
   <span>
-    <i className="fa fa-refresh fa-spin fa-fw" /> Carregando...
+    <i className="fa fa-refresh fa-spin fa-fw" /> Efetuando login
   </span>);
 
 class Login extends React.Component {

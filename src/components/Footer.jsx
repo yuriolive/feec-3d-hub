@@ -1,13 +1,6 @@
 import React from 'react';
-// import { StyleSheet, css } from 'aphrodite';
 
-// const styles = StyleSheet.create({
-//   footer: {
-//     width: '100%',
-//     'line-height': 60,
-//   },
-// });
-import LogoUnicamp from '../assets/logo_unicamp.png';
+// import LogoUnicamp from '../assets/logo_unicamp.png';
 
 const Footer = () => (
   <footer className="mb-5 mt-5">
@@ -21,13 +14,14 @@ const Footer = () => (
           </a>
         </small>
       </span>
-      <picture>
-        <source srcSet={LogoUnicamp} type="image/webp" />
-        <source srcSet={LogoUnicamp} type="image/jpeg" />
-        <img src={LogoUnicamp} alt="Alt Text!" />
-      </picture>
     </div>
   </footer>
 );
+
+// <picture>
+//   <source srcSet={LogoUnicamp} type="image/webp" />
+//   <source srcSet={LogoUnicamp} type="image/jpeg" />
+//   <img src={LogoUnicamp} alt="Alt Text!" />
+// </picture>
 
 export default Footer;

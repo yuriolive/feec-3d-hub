@@ -1,5 +1,4 @@
 var express = require('express');
-var Path = require('path');
 var compression = require('compression');
 var serveStatic = require('serve-static');
 

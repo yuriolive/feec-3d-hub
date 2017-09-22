@@ -1,6 +1,6 @@
 // import firebase from 'firebase';
 import { call, put, takeEvery } from 'redux-saga/effects';
-// import { browserHistory } from 'react-router';
+import { push } from 'react-router-redux';
 import { firebaseAuth } from '../firebase';
 import { EMAIL_LOGIN_LOADING, USER_EMAIL_LOGIN_REQUESTED, USER_EMAIL_LOGIN_SUCCEEDED, USER_EMAIL_LOGIN_FAILED } from '../actions/actions-login';
 
@@ -20,7 +20,7 @@ export function* emailLogin(action) {
     yield put({ type: EMAIL_LOGIN_LOADING });
 
     // Redirect to first page
-    // yield browserHistory.push('/');
+    yield put(push('/'));
   } catch (e) {
     yield put({ type: USER_EMAIL_LOGIN_FAILED, message: e.message });
 

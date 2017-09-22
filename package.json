@@ -30,6 +30,7 @@
     "react-transition-group": "^1.2.0",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
+    "redux-persist": "^4.9.1",
     "redux-saga": "^0.15.6",
     "serve-static": "^1.12.4",
     "webpack": "^3.5.6"
