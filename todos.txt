@@ -1,2 +1,3 @@
 - Redirect login and register page to home
 - Solve console errors in production (feec-3d-hub.firebaseapp.com or feec-3d-hub.herokuapp.com)
+- Implementar resetar senha

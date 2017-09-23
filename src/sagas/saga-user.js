@@ -2,7 +2,15 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { firebaseAuth } from '../firebase';
-import { EMAIL_LOGIN_LOADING, USER_EMAIL_LOGIN_REQUESTED, USER_EMAIL_LOGIN_SUCCEEDED, USER_EMAIL_LOGIN_FAILED } from '../actions/actions-login';
+import {
+  EMAIL_LOGIN_LOADING,
+  USER_EMAIL_LOGIN_REQUESTED,
+  USER_EMAIL_LOGIN_SUCCEEDED,
+  USER_EMAIL_LOGIN_FAILED,
+  LOGOUT_REQUESTED,
+  LOGOUT_SUCCEEDED,
+  LOGOUT_FAILED,
+} from '../actions';
 
 export function* emailLogin(action) {
   try {
@@ -11,8 +19,8 @@ export function* emailLogin(action) {
 
     const user = yield call(
       [firebaseAuth, firebaseAuth.createUserWithEmailAndPassword],
-      action.payload.email,
-      action.payload.password);
+      action.payload.email.value,
+      action.payload.password.value);
 
     yield put({ type: USER_EMAIL_LOGIN_SUCCEEDED, payload: user });
 
@@ -31,4 +39,18 @@ export function* emailLogin(action) {
 
 export function* watchEmailLogin() {
   yield takeEvery(USER_EMAIL_LOGIN_REQUESTED, emailLogin);
+}
+
+// Logout
+export function* logout() {
+  try {
+    yield call([firebaseAuth, firebaseAuth.signOut]);
+    yield put({ type: LOGOUT_SUCCEEDED });
+  } catch (e) {
+    yield put({ type: LOGOUT_FAILED, message: e.message });
+  }
+}
+
+export function* watchLogout() {
+  yield takeEvery(LOGOUT_REQUESTED, logout);
 }

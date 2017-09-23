@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import TodosReducer from './reducer-todos';
-import LoginReducer from './reducer-login';
+import UserReducer from './reducer-user';
 
 /*
  * We combine all reducers into a single object before updated data is dispatched (sent) to store
@@ -10,7 +10,7 @@ import LoginReducer from './reducer-login';
 
 const Reducers = combineReducers({
   todos: TodosReducer,
-  login: LoginReducer,
+  user: UserReducer,
   router: routerReducer,
 });
 

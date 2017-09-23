@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, Nav, NavItem, NavLink, NavDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import User from '../classes/User';
+import { logout } from '../actions/index';
 
 class AppNavbarLogin extends React.Component {
   constructor(props) {
@@ -56,7 +58,7 @@ class AppNavbarLogin extends React.Component {
                 <i className="fa fa-cog mr-2" aria-hidden="true" />Perfil
               </DropdownItem>
               <DropdownItem divider />
-              <DropdownItem tag={Link} to="/">
+              <DropdownItem tag={Link} to="/" onClick={() => this.props.logout()}>
                 <i className="fa fa-sign-out mr-2" aria-hidden="true" />Sair
               </DropdownItem>
             </DropdownMenu>
@@ -70,7 +72,7 @@ class AppNavbarLogin extends React.Component {
           <NavLink tag={Link} to="/entrar">Entrar</NavLink>
         </NavItem>
         <Button tag={Link} to="/registrar" outline color="primary" className="ml-3">
-          Registre-se
+          Cadastrar-se
         </Button>
       </Nav>);
   }
@@ -80,10 +82,11 @@ AppNavbarLogin.propTypes = {
   user: PropTypes.instanceOf(User).isRequired,
   loggedIn: PropTypes.bool.isRequired,
   displayName: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
-// Get apps state and pass it as this.props to UserList
-//      > whenever state changes, the UserList will automatically re-render
-const mapStateToProps = state => ({ loggedIn: state.login.loggedIn, user: state.login.user });
+const mapStateToProps = state => ({ loggedIn: state.user.loggedIn, user: state.user.user });
 
-export default connect(mapStateToProps)(AppNavbarLogin);
+const matchDispatchToProps = dispatch => bindActionCreators({ logout }, dispatch);
+
+export default connect(mapStateToProps, matchDispatchToProps)(AppNavbarLogin);

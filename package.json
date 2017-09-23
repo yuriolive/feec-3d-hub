@@ -33,6 +33,7 @@
     "redux-persist": "^4.9.1",
     "redux-saga": "^0.15.6",
     "serve-static": "^1.12.4",
+    "validator": "^8.2.0",
     "webpack": "^3.5.6"
   },
   "devDependencies": {
