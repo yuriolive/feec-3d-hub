@@ -63,21 +63,61 @@ class Register extends React.Component {
     if (validator.matches(
       event.target.value,
       /^(?=.*[0-9])(?=.*[!_@#$%^&*])(?=.*[a-zA-Z])[a-zA-Z0-9!_@#$%^&*]{6,}$/g)) { // Valid password
+      if (this.state.user.passwordVerify.value === '' ||
+        validator.equals(event.target.value, this.state.user.passwordVerify.value)) {
+        this.setState({
+          user: {
+            ...this.state.user,
+            password: {
+              value: event.target.value,
+              error: false,
+            },
+            passwordVerify: {
+              ...this.state.user.passwordVerify,
+              error: false,
+            },
+          },
+        });
+      } else {
+        this.setState({
+          user: {
+            ...this.state.user,
+            password: {
+              value: event.target.value,
+              error: false,
+            },
+            passwordVerify: {
+              ...this.state.user.passwordVerify,
+              error: true,
+            },
+          },
+        });
+      }
+    } else if (this.state.user.passwordVerify.value === '' ||
+      validator.equals(event.target.value, this.state.user.passwordVerify.value)) {
       this.setState({
         user: {
           ...this.state.user,
           password: {
             value: event.target.value,
+            error: true,
+          },
+          passwordVerify: {
+            ...this.state.user.passwordVerify,
             error: false,
           },
         },
       });
-    } else { // Invalid password
+    } else {
       this.setState({
         user: {
           ...this.state.user,
           password: {
             value: event.target.value,
+            error: true,
+          },
+          passwordVerify: {
+            ...this.state.user.passwordVerify,
             error: true,
           },
         },

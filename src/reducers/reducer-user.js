@@ -7,6 +7,7 @@ import {
   USER_EMAIL_REGISTER_FAILED,
   LOGOUT_SUCCEEDED,
   LOGOUT_FAILED,
+  USER_STATE_CHANGED,
 } from '../actions';
 
 const defaultUserState = {
@@ -19,13 +20,13 @@ const defaultUserState = {
 export default function (state = defaultUserState, action) {
   switch (action.type) {
     case EMAIL_LOGIN_LOADING:
-      return { ...state, loading: !state.loginLoading };
+      return { ...state, loginLoading: !state.loginLoading };
     case USER_EMAIL_LOGIN_SUCCEEDED:
       return { ...state, user: action.payload, loggedIn: true };
     case USER_EMAIL_LOGIN_FAILED:
       return { ...state, error: action.payload };
     case EMAIL_REGISTER_LOADING:
-      return { ...state, loading: !state.registerLoading };
+      return { ...state, registerLoading: !state.registerLoading };
     case USER_EMAIL_REGISTER_SUCCEEDED:
       return { ...state, user: action.payload, loggedIn: true };
     case USER_EMAIL_REGISTER_FAILED:
@@ -34,6 +35,8 @@ export default function (state = defaultUserState, action) {
       return { ...state, user: {}, loggedIn: false };
     case LOGOUT_FAILED:
       return { ...state, error: action.payload };
+    case USER_STATE_CHANGED:
+      return { ...state, user: action.payload, loggedIn: (action.payload !== null) };
     default:
       return state;
   }

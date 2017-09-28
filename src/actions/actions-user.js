@@ -27,6 +27,8 @@ export const LOGOUT_SUCCEEDED = 'LOGOUT_SUCCEEDED';
 
 export const LOGOUT_FAILED = 'LOGOUT_FAILED';
 
+// State changed
+export const USER_STATE_CHANGED = 'USER_STATE_CHANGED';
 
 // Facebook Login
 export const USER_FACEBOOK_LOGIN_REQUESTED = 'USER_FACEBOOK_LOGIN_REQUESTED';
@@ -49,3 +51,5 @@ export const facebookLogin = userData => (
   { type: USER_FACEBOOK_LOGIN_REQUESTED, payload: userData });
 
 export const logout = () => ({ type: LOGOUT_REQUESTED });
+
+export const stateChanged = userData => ({ type: USER_STATE_CHANGED, payload: userData });

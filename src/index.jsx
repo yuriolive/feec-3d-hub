@@ -20,6 +20,7 @@ import Home from './components/Home';
 import Courses from './components/Courses';
 import Projects from './components/Projects';
 import Tutorials from './components/Tutorials';
+import Tutorial from './components/Tutorial';
 import Footer from './components/Footer';
 import Error404 from './components/Error404';
 
@@ -32,6 +33,7 @@ ReactDOM.render(
           <Route exact path="/" component={Home} />
           <Route exact path="/entrar" component={Login} />
           <Route exact path="/registrar" component={Register} />
+          <Route exact path="/tutorial/:id" component={Tutorial} />
           <Route exact path="/cursos" component={Courses} />
           <Route exact path="/tutoriais" component={Tutorials} />
           <Route exact path="/projetos" component={Projects} />

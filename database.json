@@ -5,5 +5,53 @@
       "header": {
         
       } 
+  }],
+  "courses": [{
+    "title": "Primeiros passos com a impressora 3D",
+    "subtitle": "Aprenda a usar a impressora 3D da FEEC",
+    "description": "",
+    "photos": [{
+      
+    }],
+    "content": {
+      "1": {
+        "title": "",
+        "topics": []
+      },
+      "2": {
+        "title": "",
+        "topics": []
+      },
+    },
+    "date": {
+      "start": "",
+      "end": ""
+    },
+    "enrolled": []
+  }]
+  },
+  "tutorials": [{
+    "content": {
+      "1": {
+        "title": "",
+        "topics": []
+      },
+      "2": {
+        "title": "",
+        "topics": []
+      },
+    },
+    "enrolled": [],
+    "liked": []
+  }],
+  "projects": [{
+    "title": "",
+    "subtitle": "",
+    "description": "",
+    },
+    "liked": [],
+    "files": [{
+      
+    }]
   }]
 }

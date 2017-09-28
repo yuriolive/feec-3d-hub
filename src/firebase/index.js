@@ -1,4 +1,6 @@
 import * as firebase from 'firebase';
+import { stateChanged } from '../actions/actions-user';
+import store from '../store';
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -11,6 +13,14 @@ const firebaseConfig = {
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    store.dispatch(stateChanged(user));
+  } else {
+    store.dispatch(stateChanged(null));
+  }
+});
 
 export default firebaseApp;
 export const firebaseAuth = firebase.auth();
