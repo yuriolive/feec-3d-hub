@@ -73,7 +73,8 @@ const config = {
       })],
     output: {
         filename: 'bundle.[hash].js',
-        path: Path.resolve(__dirname, 'dist')
+        path: Path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     }
 };
 

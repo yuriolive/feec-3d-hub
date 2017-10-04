@@ -13,12 +13,16 @@ import store from './store';
 import { history } from './history';
 
 // Import the components
+import PrivateRoute from './components/PrivateRoute';
+
 import AppNavbar from './components/AppNavbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home';
 import Courses from './components/Courses';
 import Projects from './components/Projects';
+import Project from './components/Project';
+import AddProject from './components/AddProject';
 import Tutorials from './components/Tutorials';
 import Tutorial from './components/Tutorial';
 import Footer from './components/Footer';
@@ -33,10 +37,12 @@ ReactDOM.render(
           <Route exact path="/" component={Home} />
           <Route exact path="/entrar" component={Login} />
           <Route exact path="/registrar" component={Register} />
-          <Route exact path="/tutorial/:id" component={Tutorial} />
           <Route exact path="/cursos" component={Courses} />
           <Route exact path="/tutoriais" component={Tutorials} />
+          <Route exact path="/tutorial/:id" component={Tutorial} />
           <Route exact path="/projetos" component={Projects} />
+          <Route exact path="/projeto/:id" component={Project} />
+          <PrivateRoute exact path="/adicionar-projeto" component={AddProject} />
           <Route component={Error404} />
         </Switch>
         <Route component={Footer} />

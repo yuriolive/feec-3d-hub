@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button, Row, Col } from 'reactstrap';
+import { Container, Button, Row, Col, Badge } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const propis = {
@@ -15,7 +15,7 @@ const style = {
   'background-size': 'cover',
 };
 
-const Tutorial = ({ match }) => (
+const Project = props => (
   <div>
     <Container className="mt-3">
       <h2>{propis.title}</h2>
@@ -27,15 +27,38 @@ const Tutorial = ({ match }) => (
           <div style={style} />
         </Col>
         <Col>
-          <Button color="primary" block>Começar Tutorial</Button>
+          <Button color="primary" block>
+            <i className="fa fa-download" aria-hidden="true" /> Baixar Projeto
+          </Button>
+          <div>
+            <h5>Criado por</h5>
+          </div>
+          <div>
+            <h5>Tags</h5>
+            <ul className="list-inline">
+              <li className="list-inline-item">
+                <Badge>New</Badge>
+              </li>
+              <li className="list-inline-item">
+                <Badge>New</Badge>
+              </li>
+              <li className="list-inline-item">
+                <Badge>New</Badge>
+              </li>
+            </ul>
+          </div>
         </Col>
       </Row>
+      <div className="mt-3">
+        <h3>Descrição</h3>
+        <h3>Materiais</h3>
+      </div>
     </Container>
-    <h1 className="display-4">ID: {match.params.id}</h1>
+    <h1 className="display-4">ID: {props.match.params.id}</h1>
   </div>
 );
 
-Tutorial.propTypes = {
+Project.propTypes = {
   match: PropTypes.shape({
     isExact: PropTypes.bool.isRequired,
     params: PropTypes.shape({
@@ -46,4 +69,4 @@ Tutorial.propTypes = {
   }).isRequired,
 };
 
-export default Tutorial;
+export default Project;

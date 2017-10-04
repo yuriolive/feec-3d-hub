@@ -20,7 +20,7 @@ export default class AppNavbar extends React.Component {
   render() {
     return (
       <div className="container">
-        <Navbar color="faded" light toggleable>
+        <Navbar color="faded" className="pl-0 pr-0" light toggleable>
           <NavbarToggler right onClick={this.toggle} />
           <NavbarBrand tag={Link} to="/">FEEC 3D Hub</NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>

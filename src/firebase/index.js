@@ -25,3 +25,4 @@ firebase.auth().onAuthStateChanged((user) => {
 export default firebaseApp;
 export const firebaseAuth = firebase.auth();
 export const firebaseDb = firebase.database();
+export const firebaseSt = firebase.storage();
