@@ -5,15 +5,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Projects = props => (
-  <Container>
-    <h1 className="display-4">Projetos</h1>
-    {
-      props.loggedIn ? (
-        <Button tag={Link} to="/adicionar-projeto" color="primary">
-          <i className="fa fa-plus-circle" aria-hidden="true" /> Adicionar Projeto
-        </Button>
-      ) : ('')
-    }
+  <Container className="mt-4">
+    <div className="mb-4">
+      <span className="h2">Projetos</span>
+      {
+        props.loggedIn ? (
+          <Button tag={Link} to="/adicionar-projeto" color="primary" className="pull-right">
+            <i className="fa fa-plus-circle" aria-hidden="true" /> Adicionar Projeto
+          </Button>
+        ) : ('')
+      }
+    </div>
   </Container>
 );
 

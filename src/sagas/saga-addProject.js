@@ -30,7 +30,7 @@ export function* addProject(action) {
       title: action.payload.title.value,
       description: action.payload.description.value,
       materials: action.payload.materials.value,
-      tags: action.payload.tags.value,
+      tags: action.payload.tags.value.split(',').map(tag => tag.trim()).filter(tag => tag !== ''),
       user: action.payload.uid,
       file: randomFileName,
     });

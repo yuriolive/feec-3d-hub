@@ -13,7 +13,7 @@ const TutorialCard = props => (
       <CardText className="mt-3">{props.description}</CardText>
     </CardBlock>
     <CardFooter>
-      <CardLink href={props.url} className="mr-auto">Começar</CardLink>
+      <CardLink href={props.url} className="mr-auto">Ver mais</CardLink>
       <span className="float-right">
         <small className="text-muted">
           <i className="fa fa-clock-o" aria-hidden="true" /> 30 min

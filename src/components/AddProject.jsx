@@ -15,6 +15,11 @@ class AddProject extends React.Component {
           value: '',
           error: false,
         },
+        image: {
+          value: '',
+          preview: '',
+          error: false,
+        },
         description: {
           value: '',
           error: false,
@@ -38,6 +43,7 @@ class AddProject extends React.Component {
     this.handleMaterialsInput = this.handleMaterialsInput.bind(this);
     this.handleTagsInput = this.handleTagsInput.bind(this);
     this.handleFileInput = this.handleFileInput.bind(this);
+    this.handleImageInput = this.handleImageInput.bind(this);
   }
 
   handleTitleInput(event) {
@@ -50,6 +56,26 @@ class AddProject extends React.Component {
         },
       },
     });
+  }
+
+  handleImageInput(event) {
+    const reader = new FileReader();
+    const image = event.target.files[0];
+
+    reader.readAsDataURL(image);
+
+    reader.onloadend = () => {
+      this.setState({
+        project: {
+          ...this.state.project,
+          image: {
+            preview: reader.result,
+            value: image,
+            error: false,
+          },
+        },
+      });
+    };
   }
 
   handleDescriptionInput(event) {
@@ -81,7 +107,7 @@ class AddProject extends React.Component {
       project: {
         ...this.state.project,
         tags: {
-          value: event.target.value.split(',').map(tag => tag.trim()),
+          value: event.target.value,
           error: false,
         },
       },
@@ -102,9 +128,48 @@ class AddProject extends React.Component {
 
   render() {
     return (
-      <Container>
-        <h1 className="display-4">Adicionar Projeto</h1>
+      <Container className="mt-4">
+        <div className="mb-4">
+          <span className="h2">Adicionar novo projeto</span>
+          <Button
+            className="pull-right"
+            onClick={() => this.props.addProject({
+              ...this.state.project,
+              uid: this.props.uid,
+            })}
+            color="primary"
+            disabled={
+              this.props.loading
+              || this.state.project.title.error
+              || this.state.project.description.error
+              || this.state.project.materials.error
+              || this.state.project.title.value === ''
+              || this.state.project.description.value === ''
+              || this.state.project.materials.value === ''
+            }
+          >Enviar</Button>
+        </div>
         <Form>
+          { this.state.project.image.preview !== '' ? (
+            <img
+              alt="project"
+              className="img-thumbnail"
+              src={this.state.project.image.preview}
+              style={{ maxWidth: 200 }}
+            />) : ('')
+          }
+          <FormGroup>
+            <Label for="projectImage">Imagem do projeto</Label>
+            <Input
+              onChange={this.handleImageInput}
+              type="file"
+              name="projectImage"
+              accept="image/*"
+            />
+            <FormText color="muted">
+              O arquivo deve ser de até 600kB.
+            </FormText>
+          </FormGroup>
           <FormGroup>
             <Label for="title">Nome do Projeto</Label>
             <Input
@@ -164,22 +229,6 @@ class AddProject extends React.Component {
               O arquivo deve ser .zip contendo até 5 MB.
             </FormText>
           </FormGroup>
-          <Button
-            onClick={() => this.props.addProject({
-              ...this.state.project,
-              uid: this.props.uid,
-            })}
-            color="primary"
-            disabled={
-              this.props.loading
-              || this.state.project.title.error
-              || this.state.project.description.error
-              || this.state.project.materials.error
-              || this.state.project.title.value === ''
-              || this.state.project.description.value === ''
-              || this.state.project.materials.value === ''
-            }
-          >Adicionar Projeto</Button>
         </Form>
       </Container>
     );
