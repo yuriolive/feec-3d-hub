@@ -1,11 +1,12 @@
 var express = require('express');
 var compression = require('compression');
 var serveStatic = require('serve-static');
+var path = require('path');
 
 var app = express();
 
 app.use(compression());
-app.use(serveStatic('dist'));
+app.use(serveStatic(path.join(__dirname, 'dist')));
 
 // send all requests to index.html so browserHistory in React Router works
 app.get('*', function (req, res) {
