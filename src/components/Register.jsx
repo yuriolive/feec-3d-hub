@@ -154,7 +154,11 @@ class Register extends React.Component {
       <div className="container d-flex justify-content-center mt-3" style={{ maxWidth: '400px' }}>
         <Card block>
           <CardTitle>Cadastrar</CardTitle>
-          <Form>
+          <Form onSubmit={(e) => {
+            e.preventDefault();
+            this.props.emailRegister(this.state.user);
+          }}
+          >
             <FormGroup color={this.state.user.email.error ? 'danger' : null}>
               <Label for="exampleEmail">E-mail</Label>
               <Input
@@ -201,8 +205,8 @@ class Register extends React.Component {
             </FormGroup>
           </Form>
           <Button
+            type="submit"
             color="primary"
-            onClick={() => this.props.emailRegister(this.state.user)}
             disabled={
               this.props.loading
               || this.state.user.email.error

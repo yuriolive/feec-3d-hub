@@ -3,7 +3,7 @@ import { stateChanged } from '../actions/actions-user';
 import store from '../store';
 
 // Initialize Firebase
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyA9r_2kH8S7rzG0iEz2ue3ZzuqxESCz3BI',
   authDomain: 'feec-3d-hub.firebaseapp.com',
   databaseURL: 'https://feec-3d-hub.firebaseio.com',

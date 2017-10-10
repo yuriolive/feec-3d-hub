@@ -131,25 +131,31 @@ class AddProject extends React.Component {
       <Container className="mt-4">
         <div className="mb-4">
           <span className="h2">Adicionar novo projeto</span>
+        </div>
+        <Form onSubmit={(e) => {
+          e.preventDefault();
+          this.props.addProject({
+            ...this.state.project,
+            uid: this.props.uid,
+          });
+        }}
+        >
           <Button
             className="pull-right"
-            onClick={() => this.props.addProject({
-              ...this.state.project,
-              uid: this.props.uid,
-            })}
+            type="submit"
             color="primary"
             disabled={
               this.props.loading
               || this.state.project.title.error
               || this.state.project.description.error
               || this.state.project.materials.error
+              || this.state.project.image.value === ''
               || this.state.project.title.value === ''
               || this.state.project.description.value === ''
               || this.state.project.materials.value === ''
+              || this.state.project.file.value === ''
             }
-          >Enviar</Button>
-        </div>
-        <Form>
+          >Enviar Projeto</Button>
           { this.state.project.image.preview !== '' ? (
             <img
               alt="project"

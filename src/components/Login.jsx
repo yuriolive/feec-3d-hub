@@ -86,7 +86,11 @@ class Login extends React.Component {
       <div className="container d-flex justify-content-center mt-3" style={{ maxWidth: '400px' }}>
         <Card block>
           <CardTitle>Entrar</CardTitle>
-          <Form>
+          <Form onSubmit={(e) => {
+            e.preventDefault();
+            this.props.emailLogin(this.state.user);
+          }}
+          >
             <FormGroup color={this.state.user.email.error ? 'danger' : null}>
               <Label for="exampleEmail">E-mail</Label>
               <Input
@@ -119,18 +123,18 @@ class Login extends React.Component {
                 <Link to="/resetar-senha">Esqueceu sua senha?</Link>
               </small>
             </FormGroup>
+            <Button
+              type="submit"
+              color="primary"
+              disabled={
+                this.props.loading
+                || this.state.user.email.error
+                || this.state.user.password.error
+                || this.state.user.email.value === ''
+                || this.state.user.password.value === ''
+              }
+            >{ this.props.loading === true ? (<DisabledLoginButton />) : ('Entrar')}</Button>
           </Form>
-          <Button
-            color="primary"
-            onClick={() => this.props.emailLogin(this.state.user)}
-            disabled={
-              this.props.loading
-              || this.state.user.email.error
-              || this.state.user.password.error
-              || this.state.user.email.value === ''
-              || this.state.user.password.value === ''
-            }
-          >{ this.props.loading === true ? (<DisabledLoginButton />) : ('Entrar')}</Button>
         </Card>
       </div>
     );

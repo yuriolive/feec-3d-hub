@@ -16,26 +16,36 @@ import RandomUUID from '../functions/RandomUUID';
 export function* addProject(action) {
   const uid = action.payload.uid;
   const randomFileName = RandomUUID();
-  const userStRef = firebaseSt.ref().child(`/user/${uid}/files/${randomFileName}.zip`);
+  const userStRef = firebaseSt.ref().child(`/user/${uid}/files`);
+  const fileStRef = userStRef.child(`${randomFileName}.zip`);
+  const imageExt = action.payload.image.value.name.split('.').pop();
+  const imageName = `${randomFileName}.${imageExt}`;
+  const imageStRef = userStRef.child(imageName);
   const projectDbRef = firebaseDb.ref().child('projects');
 
   try {
     // Disable submit button
     yield put({ type: ADD_PROJECT_LOADING });
 
-    const file = yield call([userStRef, userStRef.put], action.payload.file.value);
+    yield call([imageStRef, imageStRef.put], action.payload.image.value);
+    yield call([fileStRef, fileStRef.put], action.payload.file.value);
+
     const newProjectKey = yield call([projectDbRef, projectDbRef.push]);
 
+    const date = new Date();
+
     yield call([newProjectKey, newProjectKey.set], {
+      image: imageName,
       title: action.payload.title.value,
       description: action.payload.description.value,
       materials: action.payload.materials.value,
       tags: action.payload.tags.value.split(',').map(tag => tag.trim()).filter(tag => tag !== ''),
       user: action.payload.uid,
       file: randomFileName,
+      date: date.toISOString(),
     });
 
-    yield put({ type: ADD_PROJECT_SUCCEEDED, payload: file });
+    yield put({ type: ADD_PROJECT_SUCCEEDED });
 
     // Enable submit button
     yield put({ type: ADD_PROJECT_LOADING });
