@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBlock,
-  CardTitle, CardSubtitle, CardLink, CardFooter } from 'reactstrap';
+import { Card, CardBlock, CardTitle,
+  CardLink, CardFooter } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 
-const TutorialCard = props => (
+/*
   <Card className="mt-3">
     <CardImg top width="100%" src={props.img.thubmnail} alt="Card image cap" />
     <CardBlock>
@@ -21,18 +21,23 @@ const TutorialCard = props => (
       </span>
     </CardFooter>
   </Card>
+*/
+
+const TutorialCard = props => (
+  <Card className="mt-3" key={props.key}>
+    <CardBlock>
+      <CardTitle>{props.title}</CardTitle>
+    </CardBlock>
+    <CardFooter>
+      <CardLink href={props.url} className="mr-auto">Ver mais</CardLink>
+    </CardFooter>
+  </Card>
 );
 
 TutorialCard.propTypes = {
-  img: PropTypes.shape({
-    thubmnail: PropTypes.string,
-  }).isRequired,
   title: PropTypes.string.isRequired,
-  author: PropTypes.shape({
-    name: PropTypes.string,
-  }).isRequired,
-  description: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  key: PropTypes.string.isRequired,
 };
 
 export default TutorialCard;

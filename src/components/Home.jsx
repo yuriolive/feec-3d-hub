@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import TutorialCard from './TutorialCard';
+import TutorialCard from '../containers/TutorialCard';
 
 const Home = () => (
   <div>
@@ -11,7 +11,7 @@ const Home = () => (
         <div className="col-md-4">
           <TutorialCard
             img={{ thubmnail: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180' }}
-            title="Pluviometro"
+            title="Como parar/iniciar o servidor para impressão Repetier-Server?"
             author={{ name: 'helio13' }}
             description="Pluviometro para estação metereológica"
             url="pluviometro"
@@ -20,7 +20,7 @@ const Home = () => (
         <div className="col-md-4">
           <TutorialCard
             img={{ thubmnail: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180' }}
-            title="Pluviometro"
+            title="Como se conectar ao servidor de impressão?"
             author={{ name: 'helio13' }}
             description="Pluviometro para estação metereológica"
             url="pluviometro"
@@ -29,7 +29,7 @@ const Home = () => (
         <div className="col-md-4">
           <TutorialCard
             img={{ thubmnail: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180' }}
-            title="Pluviometro"
+            title="Como trocar o filamento?"
             author={{ name: 'helio13' }}
             description="Pluviometro para estação metereológica"
             url="pluviometro"
@@ -39,9 +39,6 @@ const Home = () => (
     </div>
     <div className="container mt-4">
       <h3>Projetos em destaque</h3>
-    </div>
-    <div className="container mt-4">
-      <h3>Próximos cursos</h3>
     </div>
   </div>
 );

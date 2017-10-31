@@ -25,6 +25,7 @@ import Project from './components/Project';
 import AddProject from './components/AddProject';
 import Tutorials from './components/Tutorials';
 import Tutorial from './components/Tutorial';
+import AddTutorial from './components/AddTutorial';
 import Footer from './components/Footer';
 import Error404 from './components/Error404';
 
@@ -40,6 +41,7 @@ ReactDOM.render(
           <Route exact path="/cursos" component={Courses} />
           <Route exact path="/tutoriais" component={Tutorials} />
           <Route exact path="/tutorial/:id" component={Tutorial} />
+          <PrivateRoute exact path="/adicionar-tutorial" component={AddTutorial} />
           <Route exact path="/projetos" component={Projects} />
           <Route exact path="/projeto/:id" component={Project} />
           <PrivateRoute exact path="/adicionar-projeto" component={AddProject} />

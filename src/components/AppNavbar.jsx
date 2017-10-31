@@ -26,16 +26,16 @@ export default class AppNavbar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavLink tag={Link} to="/cursos">Cursos</NavLink>
-              </NavItem>
-              <NavItem>
                 <NavLink tag={Link} to="/tutoriais">Tutoriais</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="/projetos">Projetos</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="//143.106.50.132:3344/" target="_blank">Impressora</NavLink>
+                <NavLink href="http://143.106.50.132:3344/" target="_blank">Impressora</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://feec3dhub.freeforums.net/" target="_blank">Fórum</NavLink>
               </NavItem>
             </Nav>
             <AppNavbarLogin />

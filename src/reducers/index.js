@@ -4,6 +4,8 @@ import TodosReducer from './reducer-todos';
 import UserReducer from './reducer-user';
 import AddProjectReducer from './reducer-addProject';
 import ProjectsReducer from './reducer-projects';
+import AddTutorialReducer from './reducer-addTutorial';
+import TutorialsReducer from './reducer-tutorials';
 
 
 /*
@@ -16,6 +18,8 @@ const Reducers = combineReducers({
   user: UserReducer,
   addProject: AddProjectReducer,
   projects: ProjectsReducer,
+  addTutorial: AddTutorialReducer,
+  tutorials: TutorialsReducer,
   router: routerReducer,
 });
 
