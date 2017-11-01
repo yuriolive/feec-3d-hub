@@ -1,5 +1,5 @@
 // import firebase from 'firebase';
-import { call, put, all, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import _ from 'lodash';
 import { firebaseDb } from '../firebase';
 import {

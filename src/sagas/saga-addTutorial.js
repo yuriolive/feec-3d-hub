@@ -38,7 +38,7 @@ export function* addTutorial(action) {
     yield put({ type: ADD_TUTORIAL_LOADING });
 
     // Redirect to first page
-    yield put(push('/tutorials'));
+    yield put(push('/tutoriais'));
   } catch (e) {
     yield put({ type: ADD_TUTORIAL_FAILED, message: e.message });
 

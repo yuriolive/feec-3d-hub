@@ -4,6 +4,8 @@ import { fork } from 'redux-saga/effects';
 import { watchEmailRegister, watchEmailLogin, watchLogout } from './saga-user';
 import watchAddProject from './saga-addProject';
 import { watchProjects, watchProject } from './saga-projects';
+import watchAddTutorial from './saga-addTutorial';
+import { watchTutorials, watchTutorial } from './saga-tutorials';
 
 export default function* Sagas() {
   yield [
@@ -13,5 +15,8 @@ export default function* Sagas() {
     fork(watchAddProject),
     fork(watchProjects),
     fork(watchProject),
+    fork(watchAddTutorial),
+    fork(watchTutorials),
+    fork(watchTutorial),
   ];
 }
