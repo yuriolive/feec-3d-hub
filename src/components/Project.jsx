@@ -47,9 +47,6 @@ class Project extends React.Component {
                 <i className="fa fa-download" aria-hidden="true" /> Baixar Projeto
               </Button>
               <div>
-                <h5>Criado por</h5>
-              </div>
-              <div>
                 <h5>Tags</h5>
                 <ul className="list-inline">
                   {

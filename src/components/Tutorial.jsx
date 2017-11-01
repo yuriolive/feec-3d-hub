@@ -1,12 +1,26 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import { Container } from 'reactstrap';
+// import { Container, Card, CardTitle, CardBlock, CardSubtitle } from 'reactstrap';
+import { Container, Card, CardHeader, CardBlock, CardTitle } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
 
 import { getTutorial } from '../actions/index';
+
+/*
+  <Card>
+    <CardBlock>
+      <CardTitle>{this.props.tutorial.title}</CardTitle>
+      <CardSubtitle>Adicionado em {moment(this.props.tutorial.date).format('LL')}</CardSubtitle>
+      <ReactMarkdown
+        escapeHtml
+        source={this.state.tutorial.content.value}
+      />
+    </CardBlock>
+  </Card>
+*/
 
 moment.locale('pt-BR');
 
@@ -17,14 +31,20 @@ class Tutorial extends React.Component {
   }
 
   render() {
+    console.log(this.props.tutorial);
+
     return (
       <div>
         <Container className="mt-3">
-          <h2>{this.props.tutorial.title}</h2>
-          <p>Adicionado em {moment(this.props.tutorial.date).format('LL')}</p>
-        </Container>
-        <Container>
-          <ReactMarkdown source={this.props.tutorial.content} />
+          <Card className="tutorial-card">
+            <CardHeader>
+              <CardTitle tag="h3">{this.props.tutorial.title}</CardTitle>
+              <p>Adicionado em {moment(this.props.tutorial.date).format('LL')}</p>
+            </CardHeader>
+            <CardBlock>
+              <ReactMarkdown source={this.props.tutorial.content} />
+            </CardBlock>
+          </Card>
         </Container>
       </div>
     );
