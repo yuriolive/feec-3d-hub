@@ -112,7 +112,6 @@ class AddTutorial extends React.Component {
 
     axios.post('https://api.imgur.com/3/image', formData, config)
       .then((response) => {
-        console.log(response);
         this.setState({
           imageInputLoading: false,
           tutorial: {
@@ -213,6 +212,7 @@ class AddTutorial extends React.Component {
               onBeforeChange={this.handleContentInput}
               options={{
                 lineNumbers: true,
+                lineWrapping: true,
                 mode: 'markdown',
                 theme: '3024-night',
               }}

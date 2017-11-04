@@ -10,7 +10,8 @@ const sagaMiddleware = createSagaMiddleware();
 const middleware = [historyMiddleware, sagaMiddleware];
 
 /* eslint-disable no-underscore-dangle */
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = (process.env.NODE_ENV === 'production') ?
+  (compose) : (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose);
 
 const store = createStore(
   Reducers,

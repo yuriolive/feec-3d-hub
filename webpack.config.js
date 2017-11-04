@@ -80,8 +80,7 @@ const config = {
 
 if (process.env.NODE_ENV !== 'production') {
     config.devServer.public = 'learn-redux-yuriolive.c9users.io';
-}
-else {
+} else {
     config.plugins.push(
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin()

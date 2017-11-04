@@ -41,6 +41,28 @@ class AppNavbarLogin extends React.Component {
               ) }
             </DropdownToggle>
             <DropdownMenu right>
+              <DropdownItem tag={Link} to="/" onClick={() => this.props.logout()}>
+                <i className="fa fa-sign-out mr-2" aria-hidden="true" />Sair
+              </DropdownItem>
+            </DropdownMenu>
+          </NavDropdown>
+        </Nav>);
+    }
+
+    return (
+      <Nav navbar>
+        <NavItem>
+          <NavLink tag={Link} to="/entrar">Entrar</NavLink>
+        </NavItem>
+        <Button tag={Link} to="/registrar" outline color="primary" className="ml-3">
+          Cadastrar-se
+        </Button>
+      </Nav>);
+  }
+}
+
+/* 
+            <DropdownMenu right>
               <DropdownItem header>
                 { this.props.displayName != null ? this.props.displayName : '' }
               </DropdownItem>
@@ -62,26 +84,11 @@ class AppNavbarLogin extends React.Component {
                 <i className="fa fa-sign-out mr-2" aria-hidden="true" />Sair
               </DropdownItem>
             </DropdownMenu>
-          </NavDropdown>
-        </Nav>);
-    }
-
-    return (
-      <Nav navbar>
-        <NavItem>
-          <NavLink tag={Link} to="/entrar">Entrar</NavLink>
-        </NavItem>
-        <Button tag={Link} to="/registrar" outline color="primary" className="ml-3">
-          Cadastrar-se
-        </Button>
-      </Nav>);
-  }
-}
+*/
 
 AppNavbarLogin.propTypes = {
   user: PropTypes.instanceOf(User).isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  displayName: PropTypes.string.isRequired,
   logout: PropTypes.func.isRequired,
 };
 
